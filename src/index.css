@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
 * {
     box-sizing: border-box;
   }
@@ -14,4 +16,56 @@ main {
     height: 400px;
     border-radius: 10px;
     max-width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dice_container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    grid-template-rows: repeat(2, auto);
+    gap: 2rem;
+}
+
+.die {
+    background-color: #FFFFFF; 
+    height: 60px;
+    width: 60px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+    color: #2B283A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.die-count {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: "Karla", sans-serif;
+}
+
+.roll-dice {
+    font-family: "Karla", sans-serif;
+    margin-top: 2em;
+    font-size: 1.2rem;
+    color: #FFFFFF;
+    background-color: #5035FF;
+    border: none;
+    border-radius: 5px;
+    height: 50px;
+    width: 100px;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.roll-dice:focus {
+    outline: none;
+}
+
+.roll-dice:active {
+    box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
