@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Dice from './Dice'
 import './App.css'
 import { v4 as uuidv4 } from 'uuid';
@@ -9,6 +9,11 @@ import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const [dice, setDice] = useState(newDice())
+  const [tenzies, setTenzies] = useState(false)
+
+  useEffect(() => {
+    console.log("dice state changed")
+  }, [dice])
   
   function newDice(){
     const newDice = []
@@ -23,7 +28,16 @@ function App() {
   }
   
   function rollDice() {
-    setDice(newDice())
+    setDice(oldDice => oldDice.map(die => {
+        return die.isHeld ? 
+          die : 
+          {
+            value: Math.ceil(Math.random() * 6), 
+            isHeld: false,
+            id: uuidv4()
+          }
+      })
+    )
   }
 
   function holdDice(id) {
@@ -43,6 +57,8 @@ function App() {
 
   return (
       <main>
+        <h1 className="title">Tenzies</h1>
+        <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
         <div className="dice_container">
           {diceElements}
         </div>
