@@ -15,24 +15,29 @@ function App() {
     for (let i = 0; i < 10; i++) {
       newDice.push({ 
         value: Math.ceil(Math.random() * 6), 
-        isHeld: true,
+        isHeld: false,
         id: uuidv4()
       })
     }
-    console.log(newDice)
     return newDice
   }
   
-
   function rollDice() {
     setDice(newDice())
   }
-  
+
+  function holdDice(id) {
+    setDice(oldDice => oldDice.map(die => {
+      return die.id === id ? {...die, isHeld: !die.isHeld} : die
+    }))
+  }
+
   const diceElements = dice.map(die => (
     <Dice 
       key={die.id} 
       value={die.value} 
       isHeld={die.isHeld}
+      holdDice={() => holdDice(die.id)}
     />
   ))
 

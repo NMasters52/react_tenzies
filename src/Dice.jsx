@@ -6,8 +6,12 @@ export default function Dice(props){
     }
 
     return (
-        <div className="die" style={styles}>
-            <h2 className="die-count">{props.value}</h2>
+        <div 
+            className="die"
+            style={styles} 
+            onClick={props.holdDice}
+        >
+            <h2 className="die-count" >{props.value}</h2>
         </div>
     )
 }
