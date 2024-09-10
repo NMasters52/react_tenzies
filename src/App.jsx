@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Dice from './Dice'
 import './App.css'
 import { v4 as uuidv4 } from 'uuid';
+import Confetti from 'react-confetti'
 
 
 
