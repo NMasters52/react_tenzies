@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Dice from './Dice'
 import './App.css'
+import { useId } from 'react';
 
 
 
@@ -11,17 +12,22 @@ function App() {
   function newDice(){
     const newDice = []
     for (let i = 0; i < 10; i++) {
-      newDice.push({ value: Math.ceil(Math.random() * 6), isHeld: false})
+      newDice.push({ 
+        value: Math.ceil(Math.random() * 6), 
+        isHeld: false,
+        id: useId()
+      })
     }
-
+    console.log(newDice)
     return newDice
   }
+  
 
   function rollDice() {
     setDice(newDice())
   }
   
-  const diceElements = dice.map(die => <Dice value={die.value} />)
+  const diceElements = dice.map(die => <Dice key={die.id} value={die.value} />)
 
   return (
       <main>
