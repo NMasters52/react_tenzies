@@ -29,7 +29,6 @@ A fun and addictive dice game built with **React** and powered by **Vite**. The 
 4. The fewer rolls it takes to match all the dice, the better!
 
 
-```
 
 ## 🌐 Deployment
 
