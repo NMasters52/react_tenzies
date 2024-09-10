@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Dice from './Dice'
 import './App.css'
 import { v4 as uuidv4 } from 'uuid';
-import Confetti from 'react-confetti'
+import Confetti from "./Confetti"
 
 
 
@@ -18,9 +18,18 @@ function App() {
     const allSameValue = dice.every(die => die.value === dieValue)
     if (holdCount && allSameValue) {
       setTenzies(true)
-      return console.log("you won")
     }
   }, [dice])
+
+
+  function newGame() {
+     setTenzies(false) 
+     setDice(oldDice => oldDice.map(die => ({
+      value: Math.ceil(Math.random() * 6), 
+        isHeld: false,
+        id: uuidv4()
+     })))
+  }
   
   
   function newDice(){
@@ -63,14 +72,21 @@ function App() {
     />
   ))
 
+  const confettiEffect = tenzies && <Confetti /> 
+
+
+
   return (
       <main>
+        <div>
+          {confettiEffect}
+        </div>
         <h1 className="title">Tenzies</h1>
         <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
         <div className="dice_container">
           {diceElements}
         </div>
-        <button className="roll-dice" onClick={rollDice}>{tenzies ? "New Game" : "Roll"}</button>
+        <button className="roll-dice" onClick={tenzies ? newGame : rollDice }>{tenzies ? "New Game" : "Roll"}</button>
       </main>
   )
 }
