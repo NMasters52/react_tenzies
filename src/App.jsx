@@ -12,14 +12,15 @@ function App() {
   const [tenzies, setTenzies] = useState(false)
 
   useEffect(() => {
-    const allHeld = dice.every(die => die.isHeld)
-    const firstValue = dice[0].value
-    const allSameValue = dice.every(die => die.value === firstValue)
-    if (allHeld && allSameValue) {
+    const holdCount = dice.every(die => die.isHeld)
+    const dieValue = dice[0].value
+    const allSameValue = dice.every(die => die.value === dieValue)
+    if (holdCount && allSameValue) {
       setTenzies(true)
-      return console.log("YOU WON!")
+      return console.log("you won")
     }
   }, [dice])
+  
   
   function newDice(){
     const newDice = []
@@ -68,7 +69,7 @@ function App() {
         <div className="dice_container">
           {diceElements}
         </div>
-        <button className="roll-dice" onClick={rollDice}>Roll</button>
+        <button className="roll-dice" onClick={rollDice}>{tenzies ? "New Game" : "Roll"}</button>
       </main>
   )
 }
