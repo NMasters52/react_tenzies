@@ -1,21 +1,22 @@
 import { useState } from 'react'
 import Dice from './Dice'
 import './App.css'
-import { useId } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 
 
 
 
 function App() {
   const [dice, setDice] = useState(newDice())
-
+  
   function newDice(){
     const newDice = []
     for (let i = 0; i < 10; i++) {
       newDice.push({ 
         value: Math.ceil(Math.random() * 6), 
         isHeld: false,
-        id: useId()
+        id: uuidv4()
       })
     }
     console.log(newDice)
