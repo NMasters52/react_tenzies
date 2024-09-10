@@ -11,6 +11,10 @@ import Confetti from "./Confetti"
 function App() {
   const [dice, setDice] = useState(newDice())
   const [tenzies, setTenzies] = useState(false)
+  const [count, setCount] = useState(0)
+ 
+
+  
 
   useEffect(() => {
     const holdCount = dice.every(die => die.isHeld)
@@ -29,6 +33,7 @@ function App() {
         isHeld: false,
         id: uuidv4()
      })))
+     setCount(0)
   }
   
   
@@ -55,6 +60,7 @@ function App() {
           }
       })
     )
+    setCount(oldCount => ++oldCount)
   }
 
   function holdDice(id) {
@@ -85,6 +91,9 @@ function App() {
         <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
         <div className="dice_container">
           {diceElements}
+        </div>
+        <div>
+          {tenzies && <h4 className ="roll-count">It took you {count} rolls!</h4>}
         </div>
         <button className="roll-dice" onClick={tenzies ? newGame : rollDice }>{tenzies ? "New Game" : "Roll"}</button>
       </main>
