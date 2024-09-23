@@ -10,8 +10,9 @@ export default function Dice(props){
             className="die"
             style={styles} 
             onClick={props.holdDice}
+            data-testId="directions"
         >
-            <h2 className="die-count" >{props.value}</h2>
+            <h2 className="die-count"  >{props.value}</h2>
         </div>
     )
 }
