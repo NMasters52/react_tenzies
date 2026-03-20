@@ -1,4 +1,4 @@
-# 🎲 Tenzies Game
+# 🎲 React Tenzies
 
 A fun and addictive dice game built with **React** and powered by **Vite**. The goal is to roll all the dice until they match while trying to achieve the **lowest possible roll count**. Try it live: [nmtenzies.netlify.app](https://nmtenzies.netlify.app/)
 
