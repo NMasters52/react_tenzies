@@ -44,6 +44,3 @@ The project is already deployed on **Netlify** at [nmtenzies.netlify.app](https:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
-
-Feel free to customize this README based on your specific project setup. If you need help with anything else, let me know! 😄
